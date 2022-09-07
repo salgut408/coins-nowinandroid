@@ -67,8 +67,6 @@ fun CustomCoinItem(coin: CoinInfoListEntryModel) {
                 .background(Color.LightGray)
                 .fillMaxWidth()
                 .padding(16.dp),
-
-
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Column() {
@@ -76,12 +74,9 @@ fun CustomCoinItem(coin: CoinInfoListEntryModel) {
                     model = Builder(LocalContext.current)
                         .data(coin.image)
                         .size(50)
-
                         .build()
                 )
-                if (painter.state is AsyncImagePainter.State.Success) {
 
-                }
                 Image(
                     painter = painter,
                     contentDescription = coin.name,
@@ -109,12 +104,6 @@ fun CustomCoinItem(coin: CoinInfoListEntryModel) {
 
                 )
             }
-//            Column() {
-//                Text(
-//                    text = "${coin.symbol}",
-//                    color = Color.Black,
-//                )
-//            }
 
             Column() {
                 Text(
