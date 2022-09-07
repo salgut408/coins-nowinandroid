@@ -41,7 +41,6 @@ class CoinRepository @Inject constructor (
 
     suspend fun getCoinsList2(salsCoinsList: String): Result<List<CoinInfoListEntryModel>> {
         return Result.success(coinListResponseDtoMapper.toDomainList(coinApi.getCoinsList(salsCoinsList)))
-            .onSuccess {}
             .onFailure { return Result.failure(it) }
     }
 }

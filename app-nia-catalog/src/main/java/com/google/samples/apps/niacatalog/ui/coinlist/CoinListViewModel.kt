@@ -32,7 +32,6 @@ class CoinListViewModel @Inject constructor(
 ) : ViewModel() {
     var coinList = mutableStateOf<List<CoinInfoListEntryModel>>(listOf())
 
-
     init {
         loadCoinsList(SALS_COINS)
     }
