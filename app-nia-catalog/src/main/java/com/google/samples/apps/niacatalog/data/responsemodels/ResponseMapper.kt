@@ -40,4 +40,6 @@ class ResponseMapper: DomainMapper<CoinListResponse, CoinInfoListEntryModel> {
     fun toDomainList(initial: Response<List<CoinListResponse>>): List<CoinInfoListEntryModel> {
         return initial.body()?.map { mapToDomainModel(it) } ?: listOf()
     }
+
+
 }

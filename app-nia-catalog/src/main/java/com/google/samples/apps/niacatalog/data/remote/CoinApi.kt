@@ -42,4 +42,6 @@ interface CoinApi {
         sparkline: Boolean = false
 
     ): Response<List<CoinListResponse>>
+
+
 }

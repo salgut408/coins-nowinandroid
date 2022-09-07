@@ -40,8 +40,9 @@ class CoinListViewModel @Inject constructor(
     }
 
     fun loadCoinsList() = viewModelScope.launch {
-        val result = repository.getCoinsList()
-        coinList.value = result
+        val result = repository.getCoinsList3()
+        result.onSuccess { coinList.value = it }
+
     }
 
     fun loadSampleList() {
