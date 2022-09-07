@@ -16,4 +16,5 @@
 -->
 <resources>
     <string name="app_name">NiA Catalog</string>
+    <string name="dollar_sign">$</string>
 </resources>

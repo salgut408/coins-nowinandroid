@@ -37,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.flowlayout.FlowRow
+import com.google.samples.apps.niacatalog.ui.coinlist.CoinList
 import com.google.samples.apps.nowinandroid.core.designsystem.component.NiaDropdownMenuButton
 import com.google.samples.apps.nowinandroid.core.designsystem.component.NiaFilledButton
 import com.google.samples.apps.nowinandroid.core.designsystem.component.NiaFilterChip
@@ -545,7 +546,9 @@ fun NiaCatalog() {
                 item { Text("Tabs", Modifier.padding(top = 16.dp)) }
                 item {
                     var selectedTabIndex by remember { mutableStateOf(0) }
-                    val titles = listOf("Topics", "People")
+
+                    val titles = listOf("Topics", "People", "Prices")
+
                     NiaTabRow(selectedTabIndex = selectedTabIndex) {
                         titles.forEachIndexed { index, title ->
                             NiaTab(
@@ -554,6 +557,11 @@ fun NiaCatalog() {
                                 text = { Text(text = title) }
                             )
                         }
+                    }
+
+                    when(selectedTabIndex) {
+                        2-> CoinList()
+
                     }
                 }
                 item { Text("Navigation", Modifier.padding(top = 16.dp)) }
@@ -602,6 +610,9 @@ fun NiaCatalog() {
                     }
                 }
             }
+
+//            CoinList()
+
         }
     }
 }

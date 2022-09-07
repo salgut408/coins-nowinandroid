@@ -21,7 +21,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
 import com.google.samples.apps.niacatalog.ui.NiaCatalog
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NiaCatalogActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

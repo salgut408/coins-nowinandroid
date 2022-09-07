@@ -54,6 +54,7 @@ fun NiaTab(
         modifier = modifier,
         enabled = enabled,
         text = {
+
             val style = MaterialTheme.typography.labelLarge.copy(textAlign = TextAlign.Center)
             ProvideTextStyle(
                 value = style,

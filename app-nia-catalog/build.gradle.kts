@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 /*
  * Copyright 2022 The Android Open Source Project
  *
@@ -17,6 +19,11 @@ plugins {
     id("nowinandroid.android.application")
     id("nowinandroid.android.application.compose")
     id("nowinandroid.spotless")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    id("kotlinx-serialization")
+
+
 }
 
 android {
@@ -41,4 +48,25 @@ dependencies {
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.accompanist.flowlayout)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
+    implementation(libs.okhttp.logging)
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.kotlin.serialization)
+
+
+
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization.json)
+
+    api(libs.androidx.hilt.navigation.compose)
+    api(libs.androidx.navigation.compose)
+
+    implementation(libs.coil.kt)
+    implementation(libs.coil.kt.compose)
+
+
+
 }
