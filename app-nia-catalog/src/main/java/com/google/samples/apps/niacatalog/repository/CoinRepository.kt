@@ -31,12 +31,12 @@ class CoinRepository @Inject constructor (
 
     suspend fun getCoinsList(): List<CoinInfoListEntryModel>{
         val result = try {
-            coinApi.getCoinsList("solana,bitcoin,dogecoin,shitcoin,mex,astronaut")
+            coinApi.getCoinsList("solana,bitcoin,dogecoin,shitcoin,mex,astronaut,alt-coin,animecoin,baby-pokemoon")
         } catch (e: Exception) {
             Log.i("tag", e.message.toString())
-            return listOf(CoinInfoListEntryModel("Returned error ", "Error", "error fromapi","no", 12.3,))
+            return listOf(CoinInfoListEntryModel("Returned error ", "Error", "error fromapi","no", ))
         }
-        return coinListResponseDtoMapper.toDomainList2(result)
+        return coinListResponseDtoMapper.toDomainList(result)
     }
 
     suspend fun getSampleCoinList(): List<CoinInfoListEntryModel> {

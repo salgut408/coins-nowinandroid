@@ -29,6 +29,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -52,6 +53,7 @@ import com.google.samples.apps.niacatalog.data.models.CoinInfoListEntryModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomCoinItem(coin: CoinInfoListEntryModel) {
+
     Spacer(modifier = Modifier.width(16.dp))
 
     Card(
@@ -66,7 +68,8 @@ fun CustomCoinItem(coin: CoinInfoListEntryModel) {
                 .fillMaxWidth()
                 .padding(16.dp),
 
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
+
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Column() {
                 val painter = rememberAsyncImagePainter(
@@ -88,26 +91,36 @@ fun CustomCoinItem(coin: CoinInfoListEntryModel) {
                 )
 
             }
-            Column() {
+            Column(modifier = Modifier.align(Alignment.CenterVertically)) {
                 Text(
                     modifier = Modifier.background(Color.White),
                     text = "${coin.name}",
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.bodyLarge
 
                     )
-            }
-            Column() {
                 Text(
+                    modifier = Modifier.background(Color.White),
                     text = "${coin.symbol}",
                     color = Color.Black,
+                    style = MaterialTheme.typography.bodySmall
+
+
                 )
             }
+//            Column() {
+//                Text(
+//                    text = "${coin.symbol}",
+//                    color = Color.Black,
+//                )
+//            }
 
             Column() {
                 Text(
                     text = stringResource(R.string.dollar_sign) +"${coin.currentPrice}",
                     color = Color.Black,
+
                 )
             }
 
