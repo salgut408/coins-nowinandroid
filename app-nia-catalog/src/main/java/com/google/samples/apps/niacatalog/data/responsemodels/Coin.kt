@@ -21,7 +21,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CoinListResponse(
+data class Coin(
     @SerialName("id"                               ) var id                           : String? = null,
     @SerialName("symbol"                           ) var symbol                       : String? = null,
     @SerialName("name"                             ) var name                         : String? = null,
@@ -48,6 +48,5 @@ data class CoinListResponse(
     @SerialName("atl_date"                         ) var atlDate                      : String? = null,
     @SerialName("roi"                              ) var roi                          : String? = null,
     @SerialName("last_updated"                     ) var lastUpdated                  : String? = null
-) {
-}
+)
 

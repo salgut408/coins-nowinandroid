@@ -27,5 +27,4 @@ data class CoinInfoListEntryModel(
     var priceChangePercentage24h: Float? = null,
     var roi: String? = null,
     var lastUpdated: String? = null,
-
 )

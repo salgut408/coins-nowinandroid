@@ -20,8 +20,8 @@ import com.google.samples.apps.niacatalog.data.models.CoinInfoListEntryModel
 import com.google.samples.apps.niacatalog.data.remote.DomainMapper
 import retrofit2.Response
 
-class ResponseMapper: DomainMapper<CoinListResponse, CoinInfoListEntryModel> {
-    override fun mapToDomainModel(model: CoinListResponse): CoinInfoListEntryModel {
+class CoinResponseMapper: DomainMapper<Coin, CoinInfoListEntryModel> {
+    override fun mapToDomainModel(model: Coin): CoinInfoListEntryModel {
         return CoinInfoListEntryModel(
             id = model.id,
             name = model.name,
@@ -37,7 +37,7 @@ class ResponseMapper: DomainMapper<CoinListResponse, CoinInfoListEntryModel> {
         )
     }
 
-    fun toDomainList(initial: Response<List<CoinListResponse>>): List<CoinInfoListEntryModel> {
+    fun toDomainList(initial: Response<List<Coin>>): List<CoinInfoListEntryModel> {
         return initial.body()?.map { mapToDomainModel(it) } ?: listOf()
     }
 

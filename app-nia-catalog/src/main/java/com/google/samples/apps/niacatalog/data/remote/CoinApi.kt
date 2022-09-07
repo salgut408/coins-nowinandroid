@@ -16,16 +16,12 @@
 
 package com.google.samples.apps.niacatalog.data.remote
 
-import com.google.samples.apps.niacatalog.data.responsemodels.CoinListResponse
+import com.google.samples.apps.niacatalog.data.responsemodels.Coin
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CoinApi {
-
-
-
     @GET("coins/markets")
     suspend fun getCoinsList(
         @Query("ids")
@@ -35,13 +31,10 @@ interface CoinApi {
         @Query("order")
         order: String? = "market_cap_desc",
         @Query("per_page")
-        per_page:Int? = 100,
+        per_page: Int? = 100,
         @Query("page")
         page: Int? = 1,
         @Query("sparkline")
         sparkline: Boolean = false
-
-    ): Response<List<CoinListResponse>>
-
-
+    ): Response<List<Coin>>
 }

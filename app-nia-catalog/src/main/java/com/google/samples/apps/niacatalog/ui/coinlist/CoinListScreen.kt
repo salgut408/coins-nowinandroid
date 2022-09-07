@@ -38,13 +38,6 @@ fun CoinList (
      coinListViewModel: CoinListViewModel = hiltViewModel()
 ) {
     val coinList by remember {coinListViewModel.coinList}
-    val loadError by remember {coinListViewModel.loadError}
-    val isLoading by remember {coinListViewModel.isLoading}
-    val mycoinlist by remember {coinListViewModel.fakeCoinList}
-    val shouldBeDisplayed by remember {coinListViewModel.shouldBeDisplayed}
-
-
-
 
     Column() {
         for(items in coinList){

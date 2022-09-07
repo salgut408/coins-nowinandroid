@@ -17,23 +17,21 @@
 package com.google.samples.apps.niacatalog.repository
 
 import android.util.Log
-import android.widget.Toast
 import com.google.samples.apps.niacatalog.data.models.CoinInfoListEntryModel
 import com.google.samples.apps.niacatalog.data.remote.CoinApi
-import com.google.samples.apps.niacatalog.data.responsemodels.ResponseMapper
+import com.google.samples.apps.niacatalog.data.responsemodels.CoinResponseMapper
 import dagger.hilt.android.scopes.ActivityScoped
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ActivityScoped
 class CoinRepository @Inject constructor (
     private val coinApi: CoinApi,
-    private val coinListResponseDtoMapper: ResponseMapper,
+    private val coinListResponseDtoMapper: CoinResponseMapper,
     ) {
 
     suspend fun getCoinsList(): List<CoinInfoListEntryModel>{
         val result = try {
-            coinApi.getCoinsList("solana,bitcoin,dogecoin,shitcoin,mex,astronaut,alt-coin,animecoin,baby-pokemoon")
+            coinApi.getCoinsList("bitcoin")
         } catch (e: Exception) {
             Log.i("tag", e.message.toString())
             return listOf(CoinInfoListEntryModel("Returned error ", "Error", "error fromapi","no", ))
@@ -41,41 +39,9 @@ class CoinRepository @Inject constructor (
         return coinListResponseDtoMapper.toDomainList(result)
     }
 
-
-
-//    suspend fun getCoinsList2(): Result<List<CoinInfoListEntryModel>>{
-//        return Result.success(coinListResponseDtoMapper.toDomainList( coinApi.getCoinsList("solana,bitcoin,dogecoin,shitcoin,mex,astronaut,alt-coin,animecoin,baby-pokemoon")))
-//            .onSuccess {
-//            }
-//            .onFailure {
-
-//    }
-
-    suspend fun getCoinsList3(): Result<List<CoinInfoListEntryModel>> {
-        kotlin.runCatching {
-            coinApi.getCoinsList("solana,bitcoin,dogecoin,shitcoin,mex,astronaut,alt-coin,animecoin,baby-pokemoon")
-        }
-            .onSuccess {  }
+    suspend fun getCoinsList2(salsCoinsList: String): Result<List<CoinInfoListEntryModel>> {
+        return Result.success(coinListResponseDtoMapper.toDomainList(coinApi.getCoinsList(salsCoinsList)))
+            .onSuccess {}
             .onFailure { return Result.failure(it) }
-        return return Result.success(coinListResponseDtoMapper.toDomainList( coinApi.getCoinsList("solana,bitcoin,dogecoin,shitcoin,mex,astronaut,alt-coin,animecoin,baby-pokemoon")))
     }
-
-     fun getSampleCoinList(): List<CoinInfoListEntryModel> {
-        return listOf(
-            CoinInfoListEntryModel(
-                currentPrice = 12.4,
-                id = "id",
-                image = "image",
-                lastUpdated = null,
-
-                name = "sample",
-                priceChange24h = null,
-                priceChangePercentage24h = null,
-                roi = null,
-                symbol = "sym"
-            )
-        )
-    }
-
-
 }

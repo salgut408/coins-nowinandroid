@@ -558,10 +558,8 @@ fun NiaCatalog() {
                             )
                         }
                     }
-
                     when(selectedTabIndex) {
                         2-> CoinList()
-
                     }
                 }
                 item { Text("Navigation", Modifier.padding(top = 16.dp)) }

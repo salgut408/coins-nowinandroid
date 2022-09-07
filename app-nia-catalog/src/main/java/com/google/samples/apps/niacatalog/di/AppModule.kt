@@ -17,7 +17,7 @@
 package com.google.samples.apps.niacatalog.di
 
 import com.google.samples.apps.niacatalog.data.remote.CoinApi
-import com.google.samples.apps.niacatalog.data.responsemodels.ResponseMapper
+import com.google.samples.apps.niacatalog.data.responsemodels.CoinResponseMapper
 import com.google.samples.apps.niacatalog.repository.CoinRepository
 import com.google.samples.apps.niacatalog.util.Constants.BASE_URL
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -39,11 +39,11 @@ object AppModule {
     @Provides
     fun provideCoinRepository(
         api: CoinApi,
-        responseMapper: ResponseMapper
-    ) = CoinRepository(api, responseMapper)
+        coinResponseMapper: CoinResponseMapper
+    ) = CoinRepository(api, coinResponseMapper)
 
     @Provides
-    fun provideResponseMapper(): ResponseMapper = ResponseMapper()
+    fun provideResponseMapper(): CoinResponseMapper = CoinResponseMapper()
 
     @Singleton
     @Provides

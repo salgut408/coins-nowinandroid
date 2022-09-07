@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.samples.apps.niacatalog.data.models.CoinInfoListEntryModel
 import com.google.samples.apps.niacatalog.repository.CoinRepository
+import com.google.samples.apps.niacatalog.util.Constants.SALS_COINS
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,25 +31,17 @@ class CoinListViewModel @Inject constructor(
     private val repository: CoinRepository
 ) : ViewModel() {
     var coinList = mutableStateOf<List<CoinInfoListEntryModel>>(listOf())
-    var fakeCoinList = mutableStateOf<List<CoinInfoListEntryModel>>(listOf())
-    var loadError = mutableStateOf("")
-    var isLoading = mutableStateOf(false)
-    var shouldBeDisplayed = mutableStateOf(false)
+
 
     init {
-        loadCoinsList()
+        loadCoinsList(SALS_COINS)
     }
 
-    fun loadCoinsList() = viewModelScope.launch {
-        val result = repository.getCoinsList3()
+    fun loadCoinsList(salsCoins: String) = viewModelScope.launch {
+
+        val result = repository.getCoinsList2(salsCoins)
         result.onSuccess { coinList.value = it }
 
     }
 
-    fun loadSampleList() {
-        viewModelScope.launch {
-            val result = repository.getSampleCoinList()
-            fakeCoinList.value = result
-        }
-    }
 }

@@ -62,6 +62,7 @@ fun CustomCoinItem(coin: CoinInfoListEntryModel) {
             .shadow(5.dp, RoundedCornerShape(10.dp))
             .clip(RoundedCornerShape(10.dp))
     ) {
+
         Row(
             modifier = Modifier
                 .background(Color.LightGray)
@@ -82,10 +83,9 @@ fun CustomCoinItem(coin: CoinInfoListEntryModel) {
                     contentDescription = coin.name,
                     modifier = Modifier
                         .size(50.dp)
-
                 )
-
             }
+
             Column(modifier = Modifier.align(Alignment.CenterVertically)) {
                 Text(
                     modifier = Modifier.background(Color.White),
@@ -115,6 +115,5 @@ fun CustomCoinItem(coin: CoinInfoListEntryModel) {
 
         }
     }
-
 
 }
