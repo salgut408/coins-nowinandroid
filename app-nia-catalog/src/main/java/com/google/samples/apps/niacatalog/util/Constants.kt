@@ -18,5 +18,6 @@ package com.google.samples.apps.niacatalog.util
 
 object Constants {
     const val BASE_URL = "https://api.coingecko.com/api/v3/"
-    const val SALS_COINS = "solana,bitcoin,dogecoin,shitcoin,mex,astronaut,alt-coin,animecoin,baby-pokemoon"
+    const val SALS_COINS =
+        "solana,bitcoin,dogecoin,shitcoin,mex,astronaut,alt-coin,animecoin,baby-pokemoon"
 }
