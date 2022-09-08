@@ -24,23 +24,20 @@ import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
 @ActivityScoped
-class CoinRepository @Inject constructor (
+class CoinRepository @Inject constructor(
     private val coinApi: CoinApi,
     private val coinListResponseDtoMapper: CoinResponseMapper,
-    ) {
-
-    suspend fun getCoinsList(): List<CoinInfoListEntryModel>{
-        val result = try {
-            coinApi.getCoinsList("bitcoin")
+) {
+    suspend fun getCoinsList(salsCoinsList: String): Result<List<CoinInfoListEntryModel>> =
+        try {
+            Result.success(
+                coinListResponseDtoMapper.toDomainList(
+                    coinApi.getCoinsList(
+                        salsCoinsList
+                    )
+                )
+            )
         } catch (e: Exception) {
-            Log.i("tag", e.message.toString())
-            return listOf(CoinInfoListEntryModel("Returned error ", "Error", "error fromapi","no", ))
+            Result.failure(e)
         }
-        return coinListResponseDtoMapper.toDomainList(result)
-    }
-
-    suspend fun getCoinsList2(salsCoinsList: String): Result<List<CoinInfoListEntryModel>> {
-        return Result.success(coinListResponseDtoMapper.toDomainList(coinApi.getCoinsList(salsCoinsList)))
-            .onFailure { return Result.failure(it) }
-    }
 }
